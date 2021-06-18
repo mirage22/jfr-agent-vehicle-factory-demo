@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jfragent>
+	<!-- Global configuration options -->
+	<config>
+		<!-- This is the prefix to use when generating event class names -->
+		<classprefix>__JFREvent</classprefix>
+		<!-- Will allow the recording of arrays and object parameters as Strings. 
+			This will cause toString to be called for array elements and objects other 
+			than strings, which in turn can cause trouble if the toString method is badly 
+			implemented. Use with care. -->
+		<allowtostring>true</allowtostring>
+		<!-- Allows converters to be used. If a converter is badly implemented, 
+			you are on your own. -->
+		<allowconverter>true</allowconverter>
+	</config>
+	<events>
+		<event id="vehicle_factory.prepareParts">
+			<label>Vehicle Factory Prepare Parts</label>
+			<description>Vehicle Factory tries to prepare parts</description>
+			<class>com.wengnerits.jfr.agent.demo.VehicleFactory</class>
+			<path>demo/vehicle_factory</path>
+			<stacktrace>true</stacktrace>
+			<method>
+				<name>prepareParts</name>
+				<descriptor>(Ljava/lang/String;)V</descriptor>
+				<parameters>
+					<parameter index="0">
+						<name>Preparing Parts</name>
+						<description>factory tries to prepare parts</description>
+					</parameter>
+				</parameters>
+			</method>
+			<location>WRAP</location>
+			<fields>
+				<field>
+					<name>Factory</name>
+					<description>Factory prepare parts</description>
+					<expression>this.name</expression>
+				</field>
+			</fields>
+		</event>
+		<event id="vehicle_factory.produceVehicle">
+			<label>Vehicle Factory Produce Vehicle</label>
+			<description>Vehicle Factory produce vehicle</description>
+			<class>com.wengnerits.jfr.agent.demo.VehicleFactory</class>
+			<path>demo/vehicle_factory</path>
+			<stacktrace>true</stacktrace>
+			<method>
+				<name>produceVehicle</name>
+				<descriptor>(Ljava/lang/String;)V</descriptor>
+				<parameters>
+					<parameter index="0">
+						<name>Produce Vehicle</name>
+						<description>factory tries to produce vehicle</description>
+					</parameter>
+				</parameters>
+			</method>
+			<location>WRAP</location>
+			<fields>
+				<field>
+					<name>Factory</name>
+					<description>Factory produce vehicle</description>
+					<expression>this.name</expression>
+				</field>
+			</fields>
+		</event>
+		<event id="vehicle_factory.deliverVehicle">
+			<label>Vehicle Factory Deliver Vehicle</label>
+			<description>Vehicle Factory deliver vehicle</description>
+			<class>com.wengnerits.jfr.agent.demo.VehicleFactory</class>
+			<path>demo/vehicle_factory</path>
+			<stacktrace>false</stacktrace>
+			<method>
+				<name>deliverVehicle</name>
+				<descriptor>()V</descriptor>
+			</method>
+			<location>WRAP</location>
+			<fields>
+				<field>
+					<name>Factory</name>
+					<description>Factory produce vehicle</description>
+					<expression>this.name</expression>
+				</field>
+			</fields>
+		</event>
+	</events>
+</jfragent>
